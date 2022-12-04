@@ -19,7 +19,7 @@
   --body-font: "Poppins", sans-serif;
 
   /*.5rem = 8px | 1rem = 16px ...*/
-  --big-font-size: 3.5rem;
+  --big-font-size: 3rem;
   --h1-font-size: 2.25rem;
   --h2-font-size: 1.5rem;
   --h3-font-size: 1.25rem;
@@ -51,7 +51,7 @@
 }
 
 /* Responsive typography */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 980px) {
   :root {
     --big-font-size: 2.75rem;
     --h1-font-size: 1.5rem;
@@ -116,6 +116,7 @@ img {
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
   padding: 6rem 0 2rem;
+  min-height: 100vh;
 }
 
 .section__title {
@@ -156,6 +157,26 @@ img {
   font-weight: var(--font-medium);
 }
 
+.button--animation {
+  animation: button__animate 4s cubic-bezier(0.175, 0.185, 0.32, 1.275) infinite 1s;
+  height: 100px;
+}
+
+@keyframes button__animate {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40% 
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60% 
+  }
+
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%    
+  }
+
+}
+
 .button:hover {
   background-color: var(--title-color-dark);
 }
@@ -171,7 +192,7 @@ img {
 
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 980px) {
   .container {
     margin-left: var(--mb-1-5);
     margin-right: var(--mb-1-5);
