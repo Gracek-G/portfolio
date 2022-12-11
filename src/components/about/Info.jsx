@@ -5,7 +5,7 @@ const Info = () => {
     <div className='about__info grid'>
       <div className="about__box">
       <i class='bx bxl-javascript about__icon'></i>
-        <h3 className="about__title">JavaScript ES6</h3>
+        <h3 className="about__title">JavaScript</h3>
         <span className="about__subtitle"></span>
       </div>
 
