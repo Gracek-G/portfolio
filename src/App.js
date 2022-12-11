@@ -4,6 +4,7 @@ import Header from './components/header/Header';
 import { Home } from './components/home/Home';
 import About from './components/about/About';
 import Portfolio from './components/portfolio/Portfolio';
+import Contact from './components/contact/Contact';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Home />
       <About />
       <Portfolio />
+      <Contact />
     </main>
     </>
   )
