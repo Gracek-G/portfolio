@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import "./contact.css";
 
+
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_qtpfmep', 'template_2kq2367', form.current, 'tJ8gXrc0GwWAPOr3n')
+      .then(
+        (result) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <section className="contact section" id="contact">
       <h2 className="section__title">Contact</h2>
       <span className="section__subtitle">Interested? Let's get in touch</span>
 
       <div className="contact__container container grid">
+
+      
+
+
+
+
+
+
         <div className="contact__content">
           <h3 className="contact__title">Details</h3>
 
@@ -39,7 +64,7 @@ const Contact = () => {
           <h3 className="contact__title">Shoot me a message</h3>
 
           {/* =========== NAME =========== */}
-          <form className="contact__form">
+          <form className="contact__form" ref={form} onSubmit={sendEmail}>
             <div className="contact__form-div">
               <label className="contact__form-tag">Name</label>
               <input
