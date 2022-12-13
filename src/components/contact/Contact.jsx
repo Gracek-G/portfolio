@@ -1,21 +1,41 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import "./contact.css";
+import { useState } from 'react';
 
 
 const Contact = () => {
-  const form = useRef();
 
+  const fieldChecker = (() => {
+    // setTimeout(() => {
+      document.getElementById("check").onclick = function() {
+      let allAreFilled = true;
+      document.getElementById("myForm").querySelectorAll("[required]").forEach(function(i) {
+        if (!i.value) { allAreFilled = false;  return; }
+      })
+      if (!allAreFilled) {
+        alert('Fill all the required fields');
+      } else {
+        {toggleTab(1)}
+      }
+    };
+    // },1);
+  });
+
+  // Confimration message modal
+  const [toggleState, setToggleState] = useState(0);
+  const toggleTab = (index) => {
+    setToggleState(index);
+  }
+
+  // EmailJS sending function
+  const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs.sendForm('service_qtpfmep', 'template_2kq2367', form.current, 'tJ8gXrc0GwWAPOr3n')
       .then(
-        (result) => {
-          console.log(result.text);
-        }, (error) => {
-          console.log(error.text);
-        }
+        e.target.reset()
       );
   };
 
@@ -24,15 +44,17 @@ const Contact = () => {
       <h2 className="section__title">Contact</h2>
       <span className="section__subtitle">Interested? Let's get in touch</span>
 
+      {/* ========= Message Sent Window ========= */}
+        <div className={toggleState === 1 ? "contact__modal active-modal" : "contact__modal"}>
+            <div className="contact__modal-content">
+              <i onClick={() => toggleTab(0)} className="uil uil-times contact__modal-close"></i>
+
+              <h3 className="contact__modal-title">The message has been sent</h3>
+              <p className="contact__modal-description">Thank you for reaching out</p>
+            </div>
+        </div>
+
       <div className="contact__container container grid">
-
-      
-
-
-
-
-
-
         <div className="contact__content">
           <h3 className="contact__title">Details</h3>
 
@@ -65,29 +87,31 @@ const Contact = () => {
 
           {/* =========== NAME =========== */}
           <form className="contact__form" ref={form} onSubmit={sendEmail}>
-            <div className="contact__form-div">
+            <div className="contact__form-div" id='myForm'>
               <label className="contact__form-tag">Name</label>
               <input
                 type="text"
                 name="name"
                 className="contact__form-input"
                 placeholder="First and last name"
+                required
               />
             </div>
 
             {/* =========== EMAIL =========== */}
-            <div className="contact__form-div">
+            <div className="contact__form-div" id='myForm'>
               <label className="contact__form-tag">Email</label>
               <input
                 type="email"
                 name="email"
                 className="contact__form-input"
                 placeholder="your@email.com"
+                required
               />
             </div>
 
             {/* =========== MESSAGE =========== */}
-            <div className="contact__form-div contact__form-area">
+            <div className="contact__form-div contact__form-area" id='myForm'>
               <label className="contact__form-tag">Message</label>
               <textarea 
               name="message" 
@@ -95,10 +119,10 @@ const Contact = () => {
               rows="10"
               className="contact__form-input"
               placeholder="Type in your message"
+              required
               ></textarea>
             </div>
-
-            <button className="button button--flex">
+            <button className="button button--flex" id="check" onClick={fieldChecker}>
               Send message
               <svg
                         className="button__icon"
@@ -122,7 +146,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
+    
   )
 }
-
 export default Contact
