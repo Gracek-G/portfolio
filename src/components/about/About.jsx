@@ -8,7 +8,7 @@ const About = () => {
   return (
     <section className="about section" id="about">
       <h2 className="section__title">About Me</h2>
-      <span className="section__subtitle">My name Gracjan please give me job thank :)</span>
+      <span className="section__subtitle">Here you can find and download my resume</span>
 
       <div className="about__container container grid">
         <img src={AboutImg} alt="About_image" className='about__img' />
@@ -17,7 +17,7 @@ const About = () => {
           <Info />
 
           <p className="about__description">
-          I've been learning JavaScript for over 6 months. In the span of this time, I've created plenty of personal projects. I am looking for the opportunity to put my acquired skills to commercial use.
+          I've been learning JavaScript as well as React JS, HTML and CSS. Thanks to knowledge and skills I've aquired I was able to create plenty of personal projects. Currently I'm looking for an opportunity to put these skill to commercial use.
           </p>
 
 
