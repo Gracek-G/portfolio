@@ -2,50 +2,58 @@ import React, { useState } from 'react';
 import "./header.css";
 
 const Header = () => {
-   /*=============== TOGGLE MENU ===============*/
-   const[Toggle, showMenu] = useState(false);
+  /*=============== Change Background Header ===============*/
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector(".header");
+    // when scroll is higher than 80 viewport height add the scroll-header class to the header
+    if (this.scrollY >= 80) header.classList.add("scroll-header");
+    else header.classList.remove("scroll-header");
+  })
 
-   return (
-      <header className='header'>
-         <nav className='nav container'>
-            <a href='index.html' className='nav__logo'>GG</a>
+  /*=============== TOGGLE MENU ===============*/
+  const[Toggle, showMenu] = useState(false);
 
-            <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
-               <ul className='nav__list grid'>
-                  <li className='nav__item'>
-                     <a href='#home' className='nav__link active-link'>
-                        <i className='uil uil-estate nav__icon'></i> Home
-                     </a>
-                  </li>
+  return (
+    <header className='header'>
+        <nav className='nav container'>
+          <a href='index.html' className='nav__logo'>GG</a>
 
-                  <li className='nav__item'>
-                     <a href='#about' className='nav__link'>
-                        <i className='uil uil-user nav__icon'></i> About
-                     </a>
-                  </li>
+          <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
+              <ul className='nav__list grid'>
+                <li className='nav__item'>
+                    <a href='#home' className='nav__link active-link'>
+                      <i className='uil uil-estate nav__icon'></i> Home
+                    </a>
+                </li>
 
-                  <li className='nav__item'>
-                     <a href='#portfolio' className='nav__link'>
-                        <i className='uil uil-scenery nav__icon'></i> Portfolio
-                     </a>
-                  </li>
+                <li className='nav__item'>
+                    <a href='#about' className='nav__link'>
+                      <i className='uil uil-user nav__icon'></i> About
+                    </a>
+                </li>
 
-                  <li className='nav__item'>
-                     <a href='#contact' className='nav__link'>
-                        <i className='uil uil-message nav__icon'></i> Contact
-                     </a>
-                  </li>
-               </ul>
+                <li className='nav__item'>
+                    <a href='#portfolio' className='nav__link'>
+                      <i className='uil uil-scenery nav__icon'></i> Portfolio
+                    </a>
+                </li>
 
-               <i className='uil uil-times nav__close' onClick={() => showMenu(!Toggle)}></i>
-            </div>
+                <li className='nav__item'>
+                    <a href='#contact' className='nav__link'>
+                      <i className='uil uil-message nav__icon'></i> Contact
+                    </a>
+                </li>
+              </ul>
 
-               <div className='nav__toggle' onClick={() => showMenu(!Toggle)}>
-                  <i className='uil uil-apps'></i>
-               </div>
-         </nav>
-      </header>
-   )
+              <i className='uil uil-times nav__close' onClick={() => showMenu(!Toggle)}></i>
+          </div>
+
+              <div className='nav__toggle' onClick={() => showMenu(!Toggle)}>
+                <i className='uil uil-apps'></i>
+              </div>
+        </nav>
+    </header>
+  )
 }
 
 export default Header

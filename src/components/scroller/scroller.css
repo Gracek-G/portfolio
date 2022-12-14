@@ -1,0 +1,49 @@
+.scroller {
+  position: fixed;
+  right: 2.5rem;
+  bottom: -20%;
+  background-color: var(--title-color);
+  opacity: 0.8;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  z-index: var(--z-tooltip);
+  transition: 0.4s;
+}
+
+.scroller__icon {
+  font-size: 1.5rem;
+  color: var(--container-color);
+}
+
+.scroller:hover {
+  background-color: var(--title-color-dark);
+  transition: 0.3s;
+}
+
+.show-scroll {
+  bottom: 3rem;
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (max-width: 980px) {
+  
+}
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+  .show-scroll {
+    right: 1rem;
+    bottom: 6rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+  
+}
